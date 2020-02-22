@@ -51,9 +51,16 @@ globalArguments:
 # Additional arguments to be passed at Traefik's binary
 # All available options available on https://docs.traefik.io/reference/static-configuration/cli/
 ## Use curly braces to pass values: `helm install --set="additionalArguments={--providers.kubernetesingress,--log.level=DEBUG}"`
-additionalArguments: []
+## Use curly braces to pass values: `helm install --set="{--providers.kubernetesingress,--global.checknewversion=true}" ."
+additionalArguments:
 #  - "--providers.kubernetesingress"
 #  - "--log.level=DEBUG"
+ - "--certificatesresolvers.myresolver.acme.email=llspam@sway.com"
+ - "--certificatesresolvers.myresolver.acme.storage=acme.json"
+ - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+ - "--certificatesresolvers.myresolver.acme.tlschallenge"
+#  - "--providers.kubernetesingress"
+ - "--api.insecure"
 
 # Environment variables to be passed to Traefik's binary
 env: []
@@ -91,7 +98,7 @@ ports:
     # You SHOULD NOT expose the traefik port on production deployments.
     # If you want to access it from outside of your cluster,
     # use `kubectl proxy` or create a secure ingress
-    expose: false
+    expose: true
     # The exposed port for this service
     exposedPort: 9000
   web:
