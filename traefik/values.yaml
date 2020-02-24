@@ -24,7 +24,7 @@ rollingUpdate:
 ## Use curly braces to pass values: `helm install --set="{--providers.kubernetesingress,--global.checknewversion=true}" ."
 additionalArguments:
  - "--certificatesresolvers.myresolver.acme.email=llspam@sway.com"
- - "--certificatesresolvers.myresolver.acme.storage=acme.json"
+ - "--certificatesresolvers.myresolver.acme.storage=/acme/acme.json"
  - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
  - "--certificatesresolvers.myresolver.acme.tlschallenge"
 #  - "--providers.kubernetesingress"
