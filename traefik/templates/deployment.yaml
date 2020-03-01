@@ -27,6 +27,7 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ default 1 .Values.deployment.replicas }}
   {{- end }}
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ template "traefik.name" . }}
