@@ -28,6 +28,8 @@ additionalArguments:
  - "--certificatesresolvers.myresolver.acme.tlschallenge"
 #  - "--providers.kubernetesingress"
  - "--api.insecure"
+ - "--metrics.prometheus=true"
+ - "--metrics.prometheus.entryPoint=metrics"
 
 # Environment variables to be passed to Traefik's binary
 env: {}
@@ -63,6 +65,9 @@ ports:
     expose: true
     exposedPort: 443
   # nodePort: 32443
+  metrics:
+    port: 8082
+    expose: true
 
 # Options for the main traefik service, where the entrypoints traffic comes
 # from.
