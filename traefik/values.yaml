@@ -62,6 +62,7 @@ additionalArguments:
  - "--api.insecure"
  - "--metrics.prometheus=true"
  - "--metrics.prometheus.entryPoint=metrics"
+ - "--accesslog=true"
 
 # Environment variables to be passed to Traefik's binary
 env: []
